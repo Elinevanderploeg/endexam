@@ -1,0 +1,78 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+
+  font-family: times, serif;
+  font-size: 12pt;
+  line-height: 22pt;
+  color: #000;
+}
+
+menu{
+  top:0;
+  margin: 0;
+  padding: 30px;
+  position: fixed;
+  width: 300px;
+}
+
+#content {
+  margin-left: 300px;
+  padding: 30px;
+  width: 50%;
+margin: 0 auto;
+}
+
+img {
+  margin-top: 20px;
+  width: 600px;
+}
+
+iframe {
+  margin-top: 20px;
+}
+
+/*-------*/
+/* tekst */
+/*-------*/
+
+
+h1 {
+  font-family: "Montserrat", arial;
+  font-weight: 400;
+  margin-top:50px;
+  color: white;
+}
+
+h2 {
+  font-family: "Montserrat", arial;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  color: white;
+}
+
+p {
+  font-family: "lato", arial;
+  font-size: 16px;
+  color: white;
+}
+
+a {
+  text-decoration: line-through;
+  color: #000;
+  color: white;
+}
+
+sub {
+  line-height: 16px;
+  color: white;
+}
+
