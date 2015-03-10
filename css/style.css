@@ -11,6 +11,7 @@ body {
   font-size: 12pt;
   line-height: 22pt;
   color: rgb(217,217,217);
+  line-height: 6px;
 }
 
 menu{
@@ -29,7 +30,7 @@ menu{
 }
 
 img {
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px;
 }
 
