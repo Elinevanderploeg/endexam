@@ -1,0 +1,68 @@
+*{
+  box-sizing:border-box;
+}
+
+html {
+  height: 100%; 
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow:hidden;
+  background-color: #000;
+}
+
+
+p {
+  font-family: ' Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  color: #fff;
+  margin: 0 auto;
+  height:100%;
+  padding-top:15%;
+  text-align: center;
+  width: 70%;
+}
+
+#container.diap {
+  background:#000;
+  color:#fff;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  color: #fff;
+  margin: 0 auto;
+  height:100%;
+  padding-top:2%;
+  text-align: center;
+  width: 70%;
+}
+
+
+.maardankleiner {
+  color: #fff;
+  font-family: 'sans-serif', sans-serif;
+  font-size: 15px;
+  line-height: 200px
+
+}
+
+
+video#bgvid {
+  position: fixed; 
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto; 
+  z-index: -100;
+  background: url(polina.jpg) repeat;
+  background-size: cover;
+}
