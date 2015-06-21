@@ -1,0 +1,497 @@
+<html>
+	<head>
+		<title>KABK - tekenen</title>
+	</head>
+	
+	<body onload="init();">
+		<canvas id="canvas" width="1500" height="800" />
+
+		<script type="text/javascript" >
+			init = function() {
+
+				setInterval( draw, 200 );
+			}
+
+			var random = 0;
+			draw = function(){
+
+				random += 0.0001;
+				if( random > 1.0 ){
+					random = 0.0;
+				}
+
+			 	var ctx = document.getElementById('canvas').getContext('2d');
+
+			 	ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height );
+
+			 	ctx.strokeStyle = 'rgb( 0, 0, 0 )';
+			 	ctx.lineWidth = 20.0;
+
+
+			 	drawP(  0, 50 );
+			 	drawU( 100, 50 );
+			 	drawC( 200, 50 );
+			 	drawD( 400, 50 );
+			 	drawE( 600, 50 );
+			 	drawF( 800, 50 );
+
+			 	drawG( 1000, 50 );
+				drawH( 100, 300 );
+				drawJ( 300, 300 );
+
+
+
+			 	drawK( 600, 300 );
+				drawL( 750, 300 );
+				drawM( 850, 300 );
+
+
+
+
+			 	drawR( 850, 300 );
+				// drawL( 750, 300 );
+				// drawM( 850, 300 );
+
+
+
+
+
+
+			 	// drawL( 100, 50 );
+			 	// drawI( 300, 50 );
+			 	// drawV( 475, 50 );
+			 	// drawI( 675, 50 );
+			 	// drawN( 875, 50 );
+			 	// drawG( 1075, 50 );
+
+			 	// drawS( 100, 350 );
+			 	// drawI( 300, 350 );
+			 	// drawS( 500, 350 );
+			 	// drawT( 675, 350 );
+			 	// drawE( 875, 350 );
+			 	// drawM( 1075, 350 );
+			 	// drawM( 600, 0 );
+/*
+			 	drawLine( 500, 100, 500, 500, 8 );
+			 	drawLine( 700, 100, 500, 300, 8 );
+			 	drawLine( 700, 500, 500, 300, 8 );
+
+			 	drawLine( 950, 100, 800, 500, 8 );
+			 	drawLine( 950, 100, 1150, 500, 8 );
+			 	drawLine( 900, 300, 1100, 300, 8 );
+
+*/
+
+
+
+			 	// // drawLine( 100, 100, 100, 500, 8 );
+			 	// // drawLine( 100, 100, 200, 300, 8 );
+			 	// // drawLine( 300, 100, 200, 300, 8 );
+			 	// // drawLine( 300, 100, 300, 500, 8 );
+
+			 	// // drawLine( 500, 100, 500, 500, 8 );
+			 	// // drawLine( 700, 100, 500, 300, 8 );
+			 	// // drawLine( 700, 500, 500, 300, 8 );
+
+			 	// drawLine( 950, 100, 800, 500, 8 );
+			 	// drawLine( 950, 100, 1150, 500, 8 );
+			 	// drawLine( 900, 300, 1100, 300, 8 );
+
+
+
+
+ 	// 1: X links 
+	// 2: Y begin punt(boven) 
+	// 3: einde punt 
+	// 4: lengte  
+	// 5: heftigheid einde punt waar hij naar toe wilt 
+
+			 	
+
+
+			}
+
+		 	drawLine = function( p1x, p1y, p2x, p2y, subdivision ){
+			 	var ctx = document.getElementById('canvas').getContext('2d');
+			 	var rx = p1x;
+			 	var ry = p1y;
+
+			 	ctx.mite = 'round';
+			 	ctx.beginPath();
+			 	ctx.moveTo( p1x, p1y );
+
+			 	var n = subdivision;
+			 	for( var i = 0; i < n; i++ ){
+			 		var f = 0.2 + ( i / ( n - 1 ) ) * 0.8;
+
+			 		rx += ( Math.random() - 0.5 ) * random * 1390.0;
+			 		ry += ( Math.random() - 0.5 ) * random * 1390.0;
+
+			 		rx = ( 1.0 - f ) * rx + f * p2x;
+			 		ry = ( 1.0 - f ) * ry + f * p2y;
+
+				 	ctx.lineTo( rx, ry );
+			 	}
+			 	ctx.stroke();
+			 }
+
+
+			 var drawA = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (0 + x) 	* factor, (225 + y)  	* factor, (70 + x) 		* factor, (0 + y) 	* factor, 8 );
+				drawLine( (70 + x) 	* factor, (0 + y) 	 	* factor, (150 + x) 	* factor, (225 + y) * factor, 8 );
+				drawLine( (45 + x) 	* factor, (115 + y) 	* factor, (100 + x) 	* factor, (115 + y) * factor, 8 );
+			 }
+
+
+
+			 var drawB = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (0 + x) 	* factor, (225 + y) * factor, (0 + x) 	* factor, (0 + y) 	* factor, 8 );
+				drawLine( (0 + x) 	* factor, (0 + y) 	* factor, (115 + x) 	* factor, (0 + y) * factor, 8 );
+				drawLine( (115 + x) 	* factor, (0 + y) 	* factor, (145 + x) 	* factor, (55 + y) * factor, 8 );
+				drawLine( (145 + x) 	* factor, (55 + y) 	* factor, (115 + x) 	* factor, (115 + y) * factor, 8 );
+				drawLine( (115 + x) 	* factor, (115 + y) 	* factor, (145 + x) 	* factor, (165 + y) * factor, 8 );
+				drawLine( (145 + x) 	* factor, (165 + y) 	* factor, (110 + x) 	* factor, (225+ y) * factor, 8 );
+				drawLine( (110 + x) 	* factor, (225 + y) 	* factor, (0 + x) 	* factor, (225 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (115 + y) 	* factor, (115 + x) 	* factor, (115 + y) * factor, 8 );
+
+			 }
+
+
+			 var drawC = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (150 + x) 	* factor, (225 + y)  	* factor, (60 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (60 + x) 	* factor, (225 + y) 	 	* factor, (0 + x) 	* factor, (112 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (112 + y) 	* factor, (60 + x) 	* factor, (0 + y) * factor, 8 );
+				drawLine( (60 + x) 	* factor, (0 + y) 	* factor, (150 + x) 	* factor, (0 + y) * factor, 8 );
+
+			 }
+
+
+
+
+
+			 var drawD = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (90 + x) 		* factor, (0 + y) 	* factor, 8 );
+				drawLine( (90 + x) 	* factor, (0 + y) 	 	* factor, (150 + x) 	* factor, (100 + y) * factor, 8 );
+				drawLine( (150 + x) 	* factor, (100 + y) 	 	* factor, (90 + x) 	* factor, (225 + y) * factor, 8 );
+				drawLine( (90 + x) 	* factor, (225 + y) 	 	* factor, (0 + x) 	* factor, (225 + y) * factor, 8 );
+						drawLine( (0 + x) 	* factor, (225 + y) 	 	* factor, (0 + x) 	* factor, (0 + y) * factor, 8 );
+		
+
+			 }
+
+
+
+
+			 var drawE = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (0 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (0 + x) 	* factor, (0 + y) 	 	* factor, (150 + x) 	* factor, (0 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (112 + y) 	 	* factor, (150 + x) 	* factor, (112 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (225 + y) 	 	* factor, (150 + x) 	* factor, (225 + y) * factor, 8 );
+		
+
+			 }
+
+
+
+
+			 var drawF = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (0 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (0 + x) 	* factor, (0 + y) 	 	* factor, (150 + x) 	* factor, (0 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (112 + y) 	 	* factor, (150 + x) 	* factor, (112 + y) * factor, 8 );
+		
+
+			 }
+
+
+
+
+			 var drawG = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+			 	drawLine( (150 + x) 	* factor, (112 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (150 + x) 	* factor, (225 + y)  	* factor, (60 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (60 + x) 	* factor, (225 + y) 	 	* factor, (0 + x) 	* factor, (112 + y) * factor, 8 );
+				drawLine( (0 + x) 	* factor, (112 + y) 	* factor, (60 + x) 	* factor, (0 + y) * factor, 8 );
+				drawLine( (60 + x) 	* factor, (0 + y) 	* factor, (150 + x) 	* factor, (0 + y) * factor, 8 );
+
+			 }
+
+
+
+
+
+			 var drawH = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+
+				drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (0 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (0 + x) 	* factor, (112 + y) 	 	* factor, (150 + x) 	* factor, (112 + y) * factor, 8 );
+				drawLine( (150 + x) 	* factor, (225 + y) 	 	* factor, (150 + x) 	* factor, (0 + y) * factor, 8 );
+		
+
+			 }
+
+
+
+			 var drawJ = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (150 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (150 + x) 	* factor, (225 + y)  	* factor, (60 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (60 + x) 	* factor, (225 + y) 	 	* factor, (30 + x) 	* factor, (165 + y) * factor, 8 );
+	
+			 }
+
+
+
+
+			 var drawJ = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (150 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (150 + x) 	* factor, (225 + y)  	* factor, (60 + x) 		* factor, (225 + y) 	* factor, 8 );
+				drawLine( (60 + x) 	* factor, (225 + y) 	 	* factor, (30 + x) 	* factor, (165 + y) * factor, 8 );
+		
+
+			 }		
+
+
+
+
+
+			 var drawK = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (0+ x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (150 + x) 	* factor, (0 + y)  	* factor, (0 + x) 		* factor, (100 + y) 	* factor, 8 );
+			 	drawLine( (0 + x) 	* factor, (100 + y)  	* factor, (150 + x) 		* factor, (225+ y) 	* factor, 8 );
+
+
+			 }		
+
+
+
+			 var drawL = function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (0+ x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (0 + x) 	* factor, (225 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (0 + x) 	* factor, (100 + y)  	* factor, (150 + x) 		* factor, (225+ y) 	* factor, 8 );
+
+
+			 }		
+
+
+			 drawM = function( x, y ){
+			 	drawLine( 0 + x, 225 + y, 0 + x, 0 + y, 8 );
+				drawLine( 0 + x, 0 + y, 75 + x, 150 + y, 8 );
+			 	drawLine( 75 + x, 150 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 150 + x, 0 + y, 150 + x, 225 + y, 8 );
+
+			 }
+
+
+			 drawN = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 0 + x, 225 + y, 8 );
+			 	drawLine( 0 + x, 0 + y, 150 + x, 225 + y, 8 );
+			 	drawLine( 150 + x, 0 + y, 150 + x, 225 + y, 8 );
+
+			 }
+
+
+
+
+
+			 var drawO= function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (30 + x) 	* factor, (0 + y)  	* factor, (120 + x) 		* factor, (0 + y) 	* factor, 8 );		 
+			 	drawLine( (120 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (112 + y) 	* factor, 8 );
+			 	drawLine( (150 + x) 	* factor, (112 + y)  	* factor, (120 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (120 + x) 	* factor, (225 + y)  	* factor, (30 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (30 + x) 	* factor, (225 + y)  	* factor, (0 + x) 		* factor, (114 + y) 	* factor, 8 );
+			 	drawLine( (0 + x) 	* factor, (114 + y)  	* factor, (30 + x) 		* factor, (0 + y) 	* factor, 8 );
+		
+
+			 }
+
+
+
+
+			 var drawQ= function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (30 + x) 	* factor, (0 + y)  	* factor, (120 + x) 		* factor, (0 + y) 	* factor, 8 );		 
+			 	drawLine( (120 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (112 + y) 	* factor, 8 );
+			 	drawLine( (150 + x) 	* factor, (112 + y)  	* factor, (120 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (120 + x) 	* factor, (225 + y)  	* factor, (30 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (30 + x) 	* factor, (225 + y)  	* factor, (0 + x) 		* factor, (114 + y) 	* factor, 8 );
+			 	drawLine( (0 + x) 	* factor, (114 + y)  	* factor, (30 + x) 		* factor, (0 + y) 	* factor, 8 );
+				drawLine( (83 + x) 	* factor, (132 + y)  	* factor, (168 + x) 		* factor, (222 + y) 	* factor, 8 );
+		
+
+			 }
+
+
+
+			var drawP= function( x, y, factor ){
+				if(undefined === factor) {
+					factor = 1
+				}
+				drawLine( (0 + x) * factor, (225 + y)  	* factor, (0 + x) * factor, (0 + y) * factor, 8 );	  
+				drawLine( (0 + x) * factor, (0 + y)  	 * factor, (110 + x) * factor, (00+ y) * factor, 8 );
+				drawLine( (110 + x) * factor, (0 + y)  	 * factor, (150 + x) * factor, (67 + y) * factor, 8 );
+				drawLine( (150 + x) * factor, (67 + y)  	* factor, (110 + x) * factor, (137 + y) * factor, 8 )
+
+				drawLine( (110 + x) * factor, (137 + y)  	* factor, (0+ x) * factor, (135 + y) * factor, 8 );
+
+				}
+
+
+
+			var drawR= function( x, y, factor ){
+				if(undefined === factor) {
+					factor = 1
+				}
+				drawLine( (0 + x) * factor, (225 + y)  	* factor, (0 + x) * factor, (0 + y) * factor, 8 );	  
+				drawLine( (0 + x) * factor, (0 + y)  	 * factor, (110 + x) * factor, (00+ y) * factor, 8 );
+				drawLine( (110 + x) * factor, (0 + y)  	 * factor, (150 + x) * factor, (67 + y) * factor, 8 );
+				drawLine( (150 + x) * factor, (67 + y)  	* factor, (110 + x) * factor, (137 + y) * factor, 8 )
+				drawLine( (110 + x) * factor, (137 + y)  	* factor, (0+ x) * factor, (135 + y) * factor, 8 );
+				drawLine( (0 + x) * factor, (135 + y)  	* factor, (150+ x) * factor, (225 + y) * factor, 8 );
+
+				}
+
+
+
+			 var drawU= function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				// drawLine( (30 + x) 	* factor, (0 + y)  	* factor, (120 + x) 		* factor, (0 + y) 	* factor, 8 );		 
+			 	drawLine( (150 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (112 + y) 	* factor, 8 );
+			 	drawLine( (150 + x) 	* factor, (112 + y)  	* factor, (120 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (120 + x) 	* factor, (225 + y)  	* factor, (30 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (30 + x) 	* factor, (225 + y)  	* factor, (0 + x) 		* factor, (114 + y) 	* factor, 8 );
+			 	drawLine( (0 + x) 	* factor, (114 + y)  	* factor, (0 + x) 		* factor, (0 + y) 	* factor, 8 );
+		
+
+			 }
+
+
+
+
+
+
+
+			 drawL = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 0 + x, 225 + y, 8 );
+			 	drawLine( 0 + x, 225 + y, 150 + x, 225 + y, 8 );
+			 }
+
+
+			 drawI = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 75 + x, 0 + y, 75 + x, 225 + y, 8 );
+			 	drawLine( 0 + x, 225 + y, 150 + x, 225 + y, 8 );
+			 }
+
+			 drawV = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 100 + x, 225 + y, 8 );
+			 	drawLine( 100 + x, 225 + y, 175 + x, 0 + y, 8 );
+			 }
+
+
+			 drawN = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 0 + x, 225 + y, 8 );
+			 	drawLine( 0 + x, 0 + y, 150 + x, 225 + y, 8 );
+			 	drawLine( 150 + x, 0 + y, 150 + x, 225 + y, 8 );
+
+			 }
+
+
+			 // drawG = function( x, y ){
+			 // 	drawLine( 135 + x, 15 + y, 55 + x, 0 + y, 8 );
+			 // 	drawLine( 55 + x, 0 + y, 0 + x, 25 + y, 8 );
+			 // 	drawLine( 0 + x, 25 + y, 0 + x, 195 + y, 8 );
+			 // 	drawLine( 0 + x, 195 + y, 70 + x, 225 + y, 8 );
+			 // 	drawLine( 70 + x, 225 + y, 150 + x, 195 + y, 8 );
+			 // 	drawLine( 150 + x, 195 + y, 150 + x, 105 + y, 8 );
+			 // 	drawLine( 150 + x, 105 + y, 105 + x, 105 + y, 8 );
+
+			 // }
+
+			 drawS= function( x, y ){
+			 	// drawLine( 150 + x, 60 + y, 135 + x, 15 + y, 8 );
+			 	drawLine( 135 + x, 15 + y, 55 + x, 0 + y, 8 );
+			 	drawLine( 55 + x, 0 + y, 0 + x, 25 + y, 8 );
+
+			 	drawLine( 0 + x, 25 + y, 0 + x, 75 + y, 8 );
+			 	drawLine( 0 + x, 75 + y, 150 + x, 128 + y, 8 );
+			 	drawLine( 150 + x, 128 + y, 150 + x, 195 + y, 8 );
+			 	drawLine( 150 + x, 195 + y, 70 + x, 225 + y, 8 );
+			 	drawLine( 70 + x, 225 + y, 0 + x, 198 + y, 8 );
+
+
+			 }
+
+
+			 drawT = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 75 + x, 0 + y, 75 + x, 225 + y, 8 );
+
+			 	// drawLine( 500, 100, 500, 500, 8 );
+			 	// drawLine( 700, 100, 500, 300, 8 );
+			 	// drawLine( 700, 500, 500, 300, 8 );
+			 }
+
+
+			 drawE = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 0 + x, 225 + y, 8 );
+				drawLine( 0 + x, 0 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 0 + x, 112 + y, 150 + x, 112 + y, 8 );
+			 	drawLine( 0 + x, 225 + y, 150 + x, 225 + y, 8 );
+
+
+			 }
+
+
+
+			 drawM = function( x, y ){
+			 	drawLine( 0 + x, 225 + y, 0 + x, 0 + y, 8 );
+				drawLine( 0 + x, 0 + y, 75 + x, 150 + y, 8 );
+			 	drawLine( 75 + x, 150 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 150 + x, 0 + y, 150 + x, 225 + y, 8 );
+
+
+			 }
+
+	   </script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>text drawing</title>
+		<!-- hiermee voeg je de jquery library toe, die handig is
+		     voor het koppelen van keyboard events -->
+		<script type="text/javascript" src="jquery-1.8.3.js" ></script>
+	</head>
+
+	<body onload="init();">
+
+		<canvas id="canvas" width="800" height="600" ></canvas>
+
+		<script type="text/javascript" >
+
+			// haal de context van het canvas op, daar tekenen we in
+		 	var context = document.getElementById('canvas').getContext('2d');
+
+			// begin met een leeg woord
+		 	var word = '';
+
+		 	// eerste functie die aangeroepen wordt
+			init = function() {
+				// koppel een keyboard event aan de 'onKeyDown' functie
+				$( document ).on( 'keydown', onKeyDown );
+			}
+
+			onKeyDown = function( event ){
+				// voeg de binnengekomen letter toe aan het woord
+			 	word += String.fromCharCode( event.keyCode );
+
+			 	// teken het woord
+			 	draw();
+			}
+
+			draw = function(){
+
+				// maak het scherm schoon
+				context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+
+				// onthoudt de positie van het assenstelsel
+				context.save();
+
+				// transleer naar je stratpositie
+				context.translate( 100, 100 );
+				for( var i = 0; i < word.length; i++ ){
+
+					// teken het 'i'-de karakter van het woord
+					drawCharacter( word[ i ] );
+				}
+
+				// laat het assenstelsel weer terugspringen naar de laatst bewaarde positie
+				// (zodat het de VOLGENDE KEER dat je het woord tekent weer op dezelfde positie begint)
+				context.restore();
+			}
+
+			// generieke functie voor het tekenen van een letter
+			drawCharacter = function( character ){
+
+				// elke letter heeft zijn eigen functie
+				switch( character ){
+					case 'A':
+						drawA();
+						break;
+				}
+			}
+
+			drawA = function(){
+				// hier moet je dus je eigen code invoegen, 
+				// een functie voor elke letter
+				context.font = "20px Georgia";
+				context.fillText( 'A', 0, 0 );
+
+				// eindig de functie met een 'translate', zodat de 
+				// VOLGENDE letter een stukje verderop getekend wordt
+				context.translate( 10, 0 );
+			}
+
+
+	   </script>
+	</body>
+
+</html>

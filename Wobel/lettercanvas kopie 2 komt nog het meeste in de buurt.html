@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<title>KABK - tekenen</title>
+		<script type="text/javascript" src="jquery-1.8.3.js" ></script>
+	</head>
+	
+	<body>
+		<canvas id="canvas" width="1500" height="800" />
+
+		<script type="text/javascript" >
+
+
+			
+			var context = document.getElementById('canvas').getContext('2d');
+			var random = 0;
+
+			var startX = 50;
+			var startY = 50;
+
+			var woord = "VISVISMVISMVISVISVISMVISMVIS";
+			var woord = "";
+
+			var lastY = 0;
+
+			var lastLine = 1;
+
+			var draw = function (checkNieuweRegel) {
+				console.log("TEKEN")
+				random += 0.001;
+				if( random > 1.0 ){
+					random = 0.0;
+				}
+				// maak het scherm schoon
+				context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+				// onthoudt de positie van het assenstelsel
+				context.save();
+
+				// context.translate( 100, 100 );
+				context.translate( 0, 0 );
+				for( var i = 0; i < woord.length; i++ ){
+
+					// teken het 'i'-de karakter van het woord
+					drawCharacter( woord[ i ] );
+
+					if( i % 7 === 0 && i !== 0) {
+						console.log("niet ZEVEN", i)
+						// context.restore();
+						context.setTransform(1, 0, 0, 1, 0, 0);
+						context.translate( 0, 240 * lastLine);
+
+					} else {
+						console.log("ZEVEN", i)
+						
+						context.translate( 159, 0 );
+					}
+				}
+
+				// transleer naar je stratpositie
+				// context.translate( 100, 100 ); // <-- deze is dus belangrijk
+				// context.translate( 100, 100 ); // <-- deze is dus belangrijk
+
+				// laat het assenstelsel weer terugspringen naar de laatst bewaarde positie
+				// (zodat het de VOLGENDE KEER dat je het woord tekent weer op dezelfde positie begint)
+				context.restore();
+
+				// drawM(startX, startY);
+				// context.strokeStyle = 'rgb( 0, 0, 0 )';
+			 // 	context.lineWidth = 10.0;
+			 	// drawM(startX, startY);
+			}
+			drawCharacter = function( character ){
+
+				// elke letter heeft zijn eigen functie
+				switch( character ){
+					case 'A':
+						drawM(50, 50);
+						break;
+					case 'K':
+						drawK(50,50);
+						break;
+					case 'U':
+						drawU(50,50);
+						break
+					case 'S':
+						drawS(50,50);
+						break;
+					case 'V':
+						drawV(50,50);
+						break;
+					case 'I':
+						drawI(50,50);
+						break;
+					default:
+						drawM(50,50);
+						break;
+				}
+			}
+
+			drawLine = function( p1x, p1y, p2x, p2y, subdivision ){
+			 	var ctx = document.getElementById('canvas').getContext('2d');
+			 	var rx = p1x;
+			 	var ry = p1y;
+
+			 	ctx.mite = 'round';
+			 	ctx.beginPath();
+			 	ctx.moveTo( p1x, p1y );
+
+			 	var n = subdivision;
+			 	for( var i = 0; i < n; i++ ){
+			 		var f = 0.2 + ( i / ( n - 1 ) ) * 0.8;
+
+			 		rx += ( Math.random() - 0.5 ) * random * 390.0;
+			 		ry += ( Math.random() - 0.5 ) * random * 390.0;
+
+			 		rx = ( 1.0 - f ) * rx + f * p2x;
+			 		ry = ( 1.0 - f ) * ry + f * p2y;
+
+				 	ctx.lineTo( rx, ry );
+			 	}
+			 	ctx.stroke();
+			 }
+
+			 var drawM = function( x, y ){
+			 	drawLine( 0 + x, 225 + y, 0 + x, 0 + y, 8 );
+				drawLine( 0 + x, 0 + y, 75 + x, 150 + y, 8 );
+			 	drawLine( 75 + x, 150 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 150 + x, 0 + y, 150 + x, 225 + y, 8 );
+			 	// context.translate( 159, 0 );
+			 }
+
+			 drawI = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 150 + x, 0 + y, 8 );
+			 	drawLine( 75 + x, 0 + y, 75 + x, 225 + y, 8 );
+			 	drawLine( 0 + x, 225 + y, 150 + x, 225 + y, 8 );
+			 	// context.translate( 159, 0 );
+			 }
+
+			 drawV = function( x, y ){
+			 	drawLine( 0 + x, 0 + y, 100 + x, 225 + y, 8 );
+			 	drawLine( 100 + x, 225 + y, 175 + x, 0 + y, 8 );
+
+			 	// context.translate( 159, 0 );
+			 }
+			 drawS= function( x, y ){
+			 	// drawLine( 150 + x, 60 + y, 135 + x, 15 + y, 8 );
+			 	drawLine( 135 + x, 15 + y, 55 + x, 0 + y, 8 );
+			 	drawLine( 55 + x, 0 + y, 0 + x, 25 + y, 8 );
+
+			 	drawLine( 0 + x, 25 + y, 0 + x, 75 + y, 8 );
+			 	drawLine( 0 + x, 75 + y, 150 + x, 128 + y, 8 );
+			 	drawLine( 150 + x, 128 + y, 150 + x, 195 + y, 8 );
+			 	drawLine( 150 + x, 195 + y, 70 + x, 225 + y, 8 );
+			 	drawLine( 70 + x, 225 + y, 0 + x, 198 + y, 8 );
+
+			 	// context.translate( 159, 0 );
+			 }
+
+			$( document ).on( 'keydown', function(event) {
+				console.log("AAAAAAAA");
+				var typedLettah = String.fromCharCode( event.keyCode );
+
+
+				woord += typedLettah;
+				
+				// draw(true)
+				
+			} );
+
+			setInterval(function() {
+				draw(false)
+			}, 200);
+			// draw(false);
+	   </script>
+	</body>
+</html>

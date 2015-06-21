@@ -16,15 +16,28 @@ body {
 
 
 p {
-  font-family: ' Montserrat', sans-serif;
+  font-family: 'Lydian MT', sans-serif;
   font-weight: 400;
   font-size: 50px;
   color: #fff;
   margin: 0 auto;
   height:100%;
-  padding-top:15%;
+  padding-top:30%;
   text-align: center;
   width: 70%;
+}
+
+h1 {
+  font-family: 'Lydian MT', sans-serif;
+  font-weight: 400;
+  font-size: 80px;
+  color: #fff;
+  margin: 0 auto;
+  height:100%;
+  padding-top:30%;
+  text-align: center;
+  width: 70%;
+
 }
 
 #container.diap {
