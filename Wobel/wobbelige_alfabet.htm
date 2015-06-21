@@ -29,7 +29,7 @@
 
 
 			 	drawP(  0, 50 );
-			 	drawW( 100, 50 );
+			 	drawN( 100, 50 );
 			 	drawY( 200, 50 );
 			 	drawM( 400, 50 );
 			 	drawV( 600, 50 );
@@ -335,6 +335,18 @@
 			 }
 
 
+
+
+
+			 var drawN= function( x, y, factor ){
+			 	if(undefined === factor) {
+			 		factor = 1
+			 	}
+				drawLine( (0+ x) 	* factor, (0 + y)  	* factor, (0 + x) 		* factor, (225 + y) 	* factor, 8 );		 
+			 	drawLine( (0 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );
+			 	drawLine( (150 + x) 	* factor, (0 + y)  	* factor, (150 + x) 		* factor, (225 + y) 	* factor, 8 );
+
+			 }
 
 
 
